@@ -33,6 +33,7 @@
 		19CAF6D81D9CFE7800F7EAEE /* JokeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeTableViewCell.swift; sourceTree = "<group>"; };
 		19CAF6DA1D9D04F600F7EAEE /* JokeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
 		19CAF6DC1D9D07DA00F7EAEE /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		19D07B601DAA411F00EA1DF1 /* JokeCollection-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JokeCollection-Bridging-Header.h"; sourceTree = "<group>"; };
 		8A138660A3253183943B8287 /* Pods_JokeCollection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JokeCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB3E0CF905D068B0C60E0D9 /* Pods-JokeCollection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JokeCollection.release.xcconfig"; path = "Pods/Target Support Files/Pods-JokeCollection/Pods-JokeCollection.release.xcconfig"; sourceTree = "<group>"; };
 		D0D839D1C5D994C97E2D64D4 /* Pods-JokeCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JokeCollection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JokeCollection/Pods-JokeCollection.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 				19CAF6CB1D9CFD2900F7EAEE /* Assets.xcassets */,
 				19CAF6CD1D9CFD2900F7EAEE /* LaunchScreen.storyboard */,
 				19CAF6D01D9CFD2900F7EAEE /* Info.plist */,
+				19D07B601DAA411F00EA1DF1 /* JokeCollection-Bridging-Header.h */,
 			);
 			path = JokeCollection;
 			sourceTree = "<group>";
@@ -139,6 +141,7 @@
 					19CAF6C01D9CFD2800F7EAEE = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 4C48HQYYYN;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -355,11 +358,14 @@
 			baseConfigurationReference = D0D839D1C5D994C97E2D64D4 /* Pods-JokeCollection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4C48HQYYYN;
 				INFOPLIST_FILE = JokeCollection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jfpal.Internal.pauUI.JokeCollection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JokeCollection/JokeCollection-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -369,11 +375,13 @@
 			baseConfigurationReference = 8EB3E0CF905D068B0C60E0D9 /* Pods-JokeCollection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4C48HQYYYN;
 				INFOPLIST_FILE = JokeCollection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jfpal.Internal.pauUI.JokeCollection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JokeCollection/JokeCollection-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

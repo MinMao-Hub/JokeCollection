@@ -7,4 +7,7 @@ target 'JokeCollection' do
 
   # Pods for JokeCollection
   pod 'Alamofire', '~> 4.0.1'
+  
+  pod 'MJRefresh', '~> 3.1.12'
+  
 end

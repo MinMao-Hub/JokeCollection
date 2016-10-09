@@ -12,5 +12,7 @@ class JokeModel: NSObject {
 
     var content:String!
     var updateTime:String!
+    var unixTime:TimeInterval!
+    
     
 }

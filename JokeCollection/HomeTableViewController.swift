@@ -8,11 +8,16 @@
 
 import UIKit
 import Alamofire
+import MJRefresh
 
 class HomeTableViewController: UITableViewController {
 
     
     var jokeListArray:Array<JokeModel> = []
+    
+    let defaultReqDataQuantity:Int = 20
+    var currentpage:Int = 1
+    
     
     override func viewDidLoad() {
         
@@ -26,22 +31,47 @@ class HomeTableViewController: UITableViewController {
         
         self.tableView.tableFooterView = UIView()
         
+        self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {
+            
+            self.requestJokeData(isPullLoad: true, page: 1)
+        })
         
+        self.tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingBlock: {
+            
+            self.requestJokeData(isPullLoad: false, page: self.currentpage + 1)
+            
+        })
+        
+        self.tableView.mj_header.beginRefreshing()
+        
+    }
+    
+    
+    func requestJokeData(isPullLoad:Bool,page:Int)
+    {
         let cDate:Date = Date()
         let timeInterval = cDate.timeIntervalSince1970
         let timeStr = String(format:"%.f",timeInterval)
         
         
         let parma:[String : Any] = ["sort":"desc",
-                     "page":1,
-                     "pagesize":20,
-                     "time":timeStr,
-                     "key":"b97a9a346772e6727b0eecc1d52f03a1"
-                     ]
+                                    "page":page,
+                                    "pagesize":defaultReqDataQuantity,
+                                    "time":timeStr,
+                                    "key":"b97a9a346772e6727b0eecc1d52f03a1"
+        ]
         
         DataRequest.requestData(urlStr: "http://japi.juhe.cn/joke/content/list.from", parmas: parma) { (responseObject) in
             
             print(responseObject)
+            
+            if isPullLoad {
+                self.jokeListArray.removeAll()
+                self.tableView.mj_header.endRefreshing()
+            }else{
+                self.tableView.mj_footer.endRefreshing()
+                self.currentpage = self.currentpage + 1
+            }
             
             if let jsonResult = responseObject.result.value as? [String: Any] {
                 // do whatever with jsonResult
@@ -60,11 +90,10 @@ class HomeTableViewController: UITableViewController {
                         let joke = JokeModel()
                         joke.content = objectDic.object(forKey: "content") as! String
                         joke.updateTime = objectDic.object(forKey: "updatetime") as! String
+                        joke.unixTime = objectDic.object(forKey: "unixtime") as! TimeInterval!
                         
                         self.jokeListArray.append(joke)
                     }
-                    
-                    
                     self.tableView.reloadData()
                     
                 }else{
@@ -82,8 +111,8 @@ class HomeTableViewController: UITableViewController {
                 
             }
         }
-        
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

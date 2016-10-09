@@ -1,12 +1,15 @@
 PODS:
   - Alamofire (4.0.1)
+  - MJRefresh (3.1.12)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0.1)
+  - MJRefresh (~> 3.1.12)
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
 
-PODFILE CHECKSUM: d9b8ca5f83432659cbd864d91ee69bd14ae4ead4
+PODFILE CHECKSUM: 8039efe24d91ae1aa285fbb26137053acfd60a44
 
 COCOAPODS: 1.1.0.rc.2
