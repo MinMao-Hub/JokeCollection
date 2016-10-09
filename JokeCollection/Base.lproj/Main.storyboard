@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,31 +20,35 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J57-mY-Q5f" id="lDe-y6-f3f">
-                                    <frame key="frameInset" width="375" height="149"/>
+                                    <frame key="frameInset" width="375" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxE-Gb-dS8">
-                                            <color key="backgroundColor" red="0.98155226009999996" green="0.78635799120000005" blue="0.80712676009999995" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxE-Gb-dS8">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xie-W3-82p">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="BDN-Gs-1Ac"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="xxE-Gb-dS8" secondAttribute="bottom" constant="21.5" id="2io-h3-hG4"/>
                                         <constraint firstAttribute="trailing" secondItem="xxE-Gb-dS8" secondAttribute="trailing" constant="8" id="CYv-mN-doX"/>
-                                        <constraint firstItem="xie-W3-82p" firstAttribute="top" secondItem="xxE-Gb-dS8" secondAttribute="bottom" constant="8" id="VkA-Ji-lEi"/>
                                         <constraint firstItem="xxE-Gb-dS8" firstAttribute="top" secondItem="lDe-y6-f3f" secondAttribute="top" constant="8" id="ZfU-YE-T8D"/>
                                         <constraint firstItem="xie-W3-82p" firstAttribute="leading" secondItem="lDe-y6-f3f" secondAttribute="leading" constant="8" id="jFQ-fH-5q5"/>
                                         <constraint firstAttribute="trailing" secondItem="xie-W3-82p" secondAttribute="trailing" constant="8" id="vov-ee-a7v"/>
                                         <constraint firstItem="xxE-Gb-dS8" firstAttribute="leading" secondItem="lDe-y6-f3f" secondAttribute="leading" constant="8" id="wkm-lR-mfc"/>
-                                        <constraint firstAttribute="bottom" secondItem="xie-W3-82p" secondAttribute="bottom" constant="12" id="zEV-KI-y49"/>
+                                        <constraint firstAttribute="bottom" secondItem="xie-W3-82p" secondAttribute="bottom" constant="5" id="zEV-KI-y49"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="contentLbl" destination="xxE-Gb-dS8" id="SBK-FH-KUf"/>
                                     <outlet property="updateTimeLbl" destination="xie-W3-82p" id="Pmq-FF-z2e"/>

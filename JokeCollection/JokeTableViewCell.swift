@@ -19,7 +19,22 @@ class JokeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentLbl.textColor = UIColor.black
+        contentLbl.textAlignment = .left
+        
+        updateTimeLbl.textColor = UIColor.lightGray
+        updateTimeLbl.textAlignment = .right
+    }
 
+    func setData(joke:JokeModel!) -> Void {
+        contentLbl.text = joke.content
+        updateTimeLbl.text = "更新时间：" + joke.updateTime;
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
