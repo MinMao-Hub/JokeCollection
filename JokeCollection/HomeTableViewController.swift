@@ -73,40 +73,51 @@ class HomeTableViewController: UITableViewController {
                 self.currentpage = self.currentpage + 1
             }
             
-            if let jsonResult = responseObject.result.value as? [String: Any] {
-                // do whatever with jsonResult
-                print(jsonResult)
+            switch responseObject.result {
+            case .success( _):
                 
-                if jsonResult["reason"] as? String == "Success"
-                {
-                    let jsonResult:[String: AnyObject] = jsonResult["result"] as! [String: AnyObject]
+                if let jsonResult = responseObject.result.value as? [String: Any] {
+                    // do whatever with jsonResult
+                    print(jsonResult)
                     
-                    let listArr:Array<NSDictionary> = jsonResult["data"] as! Array<NSDictionary>
-                    
-                    for objectDic in listArr
+                    if jsonResult["reason"] as? String == "Success"
                     {
-                        print(objectDic)
+                        let jsonResult:[String: AnyObject] = jsonResult["result"] as! [String: AnyObject]
                         
-                        let joke = JokeModel()
-                        joke.content = objectDic.object(forKey: "content") as! String
-                        joke.updateTime = objectDic.object(forKey: "updatetime") as! String
-                        joke.unixTime = objectDic.object(forKey: "unixtime") as! TimeInterval!
+                        let listArr:Array<NSDictionary> = jsonResult["data"] as! Array<NSDictionary>
                         
-                        self.jokeListArray.append(joke)
+                        for objectDic in listArr
+                        {
+                            print(objectDic)
+                            
+                            let joke = JokeModel()
+                            joke.content = objectDic.object(forKey: "content") as! String
+                            joke.updateTime = objectDic.object(forKey: "updatetime") as! String
+                            joke.unixTime = objectDic.object(forKey: "unixtime") as! TimeInterval!
+                            
+                            self.jokeListArray.append(joke)
+                        }
+                        self.tableView.reloadData()
+                        
+                    }else{
+                        
+                        if jsonResult["error_code"] as? String != "0"
+                        {
+                            print("请求错误\(jsonResult["result"])")
+                        }
+                        else
+                        {
+                            print("暂无数据，请稍候再试")
+                        }
                     }
-                    self.tableView.reloadData()
                     
-                }else{
                     
-                    if jsonResult["error_code"] as? String != "0"
-                    {
-                        print("请求失败\(jsonResult["result"])")
-                    }
-                    else
-                    {
-                        print("暂无数据，请稍候再试")
-                    }
                 }
+                
+                break
+            case .failure(let Error):
+                print("请求失败\(Error.localizedDescription)")
+                break
                 
                 
             }
