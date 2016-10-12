@@ -156,7 +156,7 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 21.5 + JokeUtils.getTextHeight(textStr: jokeListArray[indexPath.row].content, font: UIFont.systemFont(ofSize: 15), lblWidth: kScreenWidth - 16);
+        return 21.5 + JokeUtils.getTextHeight(textStr: jokeListArray[indexPath.row].content, font: UIFont.init(name: "PingFangTC-Regular", size: 25)!, lblWidth: kScreenWidth - 16);
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

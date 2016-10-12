@@ -23,10 +23,11 @@ class JokeTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentLbl.textColor = UIColor.black
+        contentLbl.textColor = UIColor.white
+        contentLbl.font = UIFont.init(name: "PingFangTC-Regular", size: 25)
         contentLbl.textAlignment = .left
         
-        updateTimeLbl.textColor = UIColor.lightGray
+        updateTimeLbl.textColor = UIColor.white
         updateTimeLbl.textAlignment = .right
     }
 
